@@ -1,4 +1,6 @@
 /**
+ *
+ * Wichtig die Matrix wird 1 basiert gezählt!
  * @author ufvgn
  */
 public class Matrix {
@@ -38,7 +40,14 @@ public class Matrix {
             }
         }
     }
-
+    public void setValue(int i, int j, int value) {
+        i = i-1;
+        j = j-1;
+        if(i < 0 || i > matrix.length||j < 0 || j > matrix[0].length){
+            throw new IndexOutOfBoundsException(String.format("Index out of bounds: %d, %d, size: (%d,%d)", i +1, j +1,row, colum));
+        }
+        matrix[i][j] = value;
+    }
     public int getRow() {
         return row;
     }
@@ -47,11 +56,25 @@ public class Matrix {
         return colum;
     }
 
-    public int[][] getMatrix() {
+    public int[][] getMatrixIntegerArray() {
         return matrix;
     }
 
+    /**
+     *
+     * @param i 1 based indes of Rows
+     * @param j 1 based index of columens
+     * @return the Value of i,j
+     */
     public int getValue(int i, int j) {
-        return matrix[i][j];
+        valideSize(i -1, j-1);
+        return matrix[i -1][j -1];
+    }
+    private boolean valideSize(int i, int j) {
+        if(i < 0 || i > getRow()||j < 0 || j > getColum()){
+            System.err.println("Invalid index or index out of bounds");
+            throw new IndexOutOfBoundsException(String.format("Index out of bounds: %d, %d, size: (%d,%d)", i +1, j +1,getRow(), getColum()));
+        }
+        return true;
     }
 }

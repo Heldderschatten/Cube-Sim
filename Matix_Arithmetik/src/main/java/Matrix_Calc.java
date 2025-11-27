@@ -14,4 +14,23 @@ public class Matrix_Calc {
         }
         return new Matrix(solution);
     }
+    public static Matrix multiply(Matrix a, Matrix b) {
+        if((a.getColum()!= b.getRow())) {
+            throw new ArithmeticException("Matrix a must have the same number of Rows like matrix b Columns ");
+        }
+        Matrix result = new Matrix(a.getRow(), b.getColum());
+        for (int i = 1; i <= result.getRow(); i++){         //Schleife über die Zeilen von result
+            for(int k = 1; k <= result.getColum(); k++){    //Schleife über die Spalten von result
+                for(int j = 1; j <= b.getRow(); j++){
+                    int aValue = a.getValue(i,j);
+                    int bValue = b.getValue(j,k);
+                    int oldValue = result.getValue(i, k);
+                    int multipl = aValue * bValue;
+                    int value = oldValue + multipl;
+                    result.setValue(i,k,value);
+                }
+            }
+        }
+        return result;
+    }
 }
