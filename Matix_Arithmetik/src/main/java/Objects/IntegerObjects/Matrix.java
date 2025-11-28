@@ -51,7 +51,7 @@ public class Matrix {
         }
     }
     public void setValue(int m, int n, int value) {
-        if (valSize(m,n))
+        if (!valSize(m,n))
             throw new IllegalArgumentException("You can not write a number outside of the Matrix:(" + m + " ; " + n + ")" );
         matrix[m-1][n-1] = value;
     }
@@ -91,8 +91,10 @@ public class Matrix {
             throw new IllegalArgumentException("You can not enter a number outside of the Matrix");
         return matrix[m -1][n -1];
     }
-
+    //Reutrn if the 1 based Coordiante is in the Matrix
     private boolean valSize(int m, int n) {
-        return m > 0 && m>= getRow() && n > 0 && n >getColumn();
+        boolean a = m > 0 && m <= getRow();
+        boolean b =  n > 0 && n <= getColumn();
+        return a && b;
     }
 }
