@@ -1,6 +1,9 @@
 /**
  * @author ufvgn
  */
+import Calculation.Matrix_Calc;
+import Objects.IntegerObjects.Matrix;
+import Objects.IntegerObjects.Vector;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 public class Matrix_Test {
@@ -30,13 +33,13 @@ public class Matrix_Test {
     @Test
     void matrix_mulipling(){
         for(int i = 0; i < A.length; i++){
-            testMatrixEqual(C[i],Matrix_Calc.multiply(A[i],B[i]), "Matrix Multiplkation");
+            testMatrixEqual(C[i], Matrix_Calc.multiply(A[i],B[i]), "Objects.IntegerObjects.Matrix Multiplkation");
         }
     }
 
     private void testMatrixEqual(Matrix A, Matrix B, String message){
         for(int i = 1; i <= A.getRow() ; i++){
-            for(int j = 1; j <= A.getColum(); j++){
+            for(int j = 1; j <= A.getColumn(); j++){
                 assertEquals(A.getValue(i,j),B.getValue(i,j), message + String.format(" Error in line %d, %d", i,j));
             }
         }
