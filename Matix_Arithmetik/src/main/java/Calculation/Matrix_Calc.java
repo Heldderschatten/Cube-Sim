@@ -1,53 +1,51 @@
 package Calculation;
 
+import Objects.IntegerObjects.Matrix;
+
 /**
  * @author ufvgn
  */
-public class Matrix_Calc {/*
+public class Matrix_Calc {
+    /**
+     * Add a Matrix a to a matrix b
+     * @param a the first Matrix
+     * @param b the second matrix
+     * @return
+     */
     public static Matrix add(Matrix a, Matrix b) {
-        if((a.getRow() != b.getRow()) || (a.getColum() != b.getColum())){
+        if((a.getRow() != b.getRow()) || (a.getColumn() != b.getColumn())){
             throw new ArithmeticException("Objects.IntegerObjects.Matrix does not have the same number of columns and rows");
         }
-        int[][] solution = new int[a.getRow()][a.getColum()];
+        int[][] solution = new int[a.getRow()][a.getColumn()];
         for(int i = 0; i < a.getRow(); i++){
-            for(int j = 0; j < a.getColum(); j++){
+            for(int j = 0; j < a.getColumn(); j++){
                 solution[i][j] = a.getValue(i, j) + b.getValue(i, j);
             }
         }
         return new Matrix(solution);
     }
+
+    /**
+     * Multipy two given matrix.
+     *
+     * Importend! the Matrix mulipkation is  non-commutativity
+     * @param a Maritx a
+     * @param b Matirx b
+     * @return a Matrix with the size a.row and b.column
+     */
     public static Matrix multiply(Matrix a, Matrix b) {
-        System.out.println("------------------------");
-        printMatrix(a);
-        System.out.println("TIMES:");
-        printMatrix(b);
-        System.out.println("=======");
-        if((a.getColum()!= b.getRow())) {
+        if((a.getColumn()!= b.getRow())) {
             throw new ArithmeticException("Objects.IntegerObjects.Matrix a must have the same number of Rows like matrix b Columns ");
         }
-        Matrix result = new Matrix(a.getRow(), b.getColum());
+        Matrix result = new Matrix(a.getRow(), b.getColumn());
+
         for (int i = 1; i <= result.getRow(); i++){         //Schleife über die Zeilen von result
-            for(int k = 1; k <= result.getColum(); k++){    //Schleife über die Spalten von result
+            for(int k = 1; k <= result.getColumn(); k++){    //Schleife über die Spalten von result
                 for(int j = 1; j <= b.getRow(); j++){
-                    int aValue = a.getValue(i,j);
-                    int bValue = b.getValue(j,k);
-                    int oldValue = result.getValue(i, k);
-                    int multipl = aValue * bValue;
-                    int value = oldValue + multipl;
-                    result.setValue(i,k,value);
+                    result.setValue(i,k,result.getValue(i,k) + a.getValue(i,j) + b.getValue(j,k));
                 }
             }
         }
-        printMatrix(result);
         return result;
     }
-
-    private static void printMatrix(Matrix m) {
-        for(int i = 1; i <= m.getRow(); i++) {
-            for(int j = 1; j <= m.getColum(); j++) {
-                System.out.printf("|%d|", m.getValue(i, j));
-            }
-            System.out.println();
-        }
-    }*/
 }

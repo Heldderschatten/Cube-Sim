@@ -41,7 +41,15 @@ public class TestMatrix {
         assertThrows(IllegalArgumentException.class, () -> m.getValue(1, Integer.MIN_VALUE));
         assertThrows(IllegalArgumentException.class, () -> m.getValue(Integer.MAX_VALUE, 1));
         assertThrows(IllegalArgumentException.class, () -> m.getValue(Integer.MIN_VALUE, 1));
-        
+    }
+
+    @Test
+    public void createTest(){
+        Matrix m = new Matrix(3,2);
+        int[][] solu= {{0,0},{0,0},{0,0}};
+        for(int i = 0; i < 3; i++){
+            assertArrayEquals(solu[i],m.getValue()[i]);
+        }
     }
     
     @Test

@@ -12,6 +12,27 @@ public class Matrix {
     private final int column;
     private int[][] matrix;
 
+    /**
+     * Cretae a null Matrix with the given Size.
+     * @param m the Numbers of rows
+     * @param n the NUmber of Columns
+     */
+    public Matrix(int m, int n) {
+        this.row = m;
+        this.column = n;
+        matrix = new int[row][column];
+        for(int i = 1; i <= this.row; i++) {
+            for(int j =1; j <= this.column;j++){
+                setValue(i,j,0);
+            }
+        }
+    }
+
+
+    /**
+     * Create a Matirx by a given list of integers
+     * @param matrix
+     */
     public Matrix(int[][] matrix) {
         if(matrix == null)
             throw new IllegalArgumentException("Matrix is null");
