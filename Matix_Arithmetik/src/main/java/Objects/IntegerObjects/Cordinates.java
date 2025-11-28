@@ -25,7 +25,7 @@ public abstract class Cordinates {
     }
 
     private boolean validateDimension(int d) {
-        return d > 0 && d < dimension;
+        return d > 0 && d <= dimension;
     }
     // getter  & Setter
     //#############Setter####################

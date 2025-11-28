@@ -26,28 +26,33 @@ public class Matrix {
                 .toArray(int[][]::new);
     }
 
-    public Matrix(Vector... vectors) {
-        if (vectors.length == 0) {
+    public Matrix(Vector... vector) {
+        validateVectors(vector);
+        this.row = vector.length;
+        this.column = vector.length;
+        this.matrix = new int[row][column];
+        setVectors(vector);
+    }
+
+    private boolean validateVectors(Vector[] vector) {
+        if (vector.length == 0)
             throw new IllegalArgumentException("Vectors can not be empty");
-        }
-        if(!(Arrays.stream(vectors).map(Vector::getDimension).distinct().count() <= 1))
+        if(!(Arrays.stream(vector).map(Vector::getDimension).distinct().count() <= 1))
             throw new IllegalArgumentException("Vectors must have the same dimension");
+        return true;
+    }
 
-
-        this.row = vectors.length;
-        this.column = vectors.length;
-
+    private void setVectors(Vector[] vector) {
         for(int n = 1; n <= column; n++) {
-            Vector v = vectors[n-1];
+            Vector v = vector[n-1];
             for(int m  = 1; m <= row; m++) {
                 setValue(m,n,v.getValue(m));
             }
         }
-
     }
     public void setValue(int m, int n, int value) {
-        if (!valSize(m,n))
-            throw new IllegalArgumentException("You can not write a number outside of the Matrix");
+        if (valSize(m,n))
+            throw new IllegalArgumentException("You can not write a number outside of the Matrix:(" + m + " ; " + n + ")" );
         matrix[m-1][n-1] = value;
     }
 
@@ -88,6 +93,6 @@ public class Matrix {
     }
 
     private boolean valSize(int m, int n) {
-        return !(m < 0 || m > getRow() || n < 0 || n > getColumn());
+        return m > 0 && m>= getRow() && n > 0 && n >getColumn();
     }
 }
