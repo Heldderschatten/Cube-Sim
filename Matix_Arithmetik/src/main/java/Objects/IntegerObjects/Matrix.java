@@ -49,7 +49,7 @@ public class Matrix {
 
     public Matrix(Vector... vector) {
         validateVectors(vector);
-        this.row = vector.length;
+        this.row = vector[0].getDimension();
         this.column = vector.length;
         this.matrix = new int[row][column];
         setVectors(vector);
