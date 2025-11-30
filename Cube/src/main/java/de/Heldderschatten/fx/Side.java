@@ -2,7 +2,7 @@ package de.Heldderschatten.fx;
 
 import Objects.IntegerObjects.Point;
 
-import java.awt.*;
+
 
 public class Side {
     private Point postion;

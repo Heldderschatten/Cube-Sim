@@ -1,6 +1,6 @@
 package de.Heldderschatten.fx;
 
-public enum Colors {
+public enum Color {
     YELLOW,
     RED,
     GREEN,
