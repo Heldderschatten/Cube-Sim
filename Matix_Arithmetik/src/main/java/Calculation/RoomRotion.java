@@ -1,5 +1,6 @@
 package Calculation;
 
+import Objects.IntegerObjects.Axis;
 import Objects.IntegerObjects.Matrix;
 import Objects.IntegerObjects.Point;
 import Objects.IntegerObjects.Vector;
@@ -28,18 +29,18 @@ public class RoomRotion {
         return new Point(result.getValue(1, 1), result.getValue(1, 2), result.getValue(1, 3));
     }
 
-    public static Vector rotateVector(char value, Vector v){
+    public static Vector rotateVector(Axis axis, Vector v){
         Matrix rotation;
-        switch (value) {
-            case 'x' -> rotation = ROTATE_X_90Degree;
-            case 'y' -> rotation = ROTATE_Y_90Degree;
-            case 'z' -> rotation = ROTATE_Z_90Degree;
+        switch (axis) {
+            case X_AXIS -> rotation = ROTATE_X_90Degree;
+            case Y_AXIS -> rotation = ROTATE_Y_90Degree;
+            case Z_AXIS -> rotation = ROTATE_Z_90Degree;
             default -> throw new IllegalArgumentException("Invalid Dimension");
         }
         Matrix result = Matrix_Calc.multiply(rotation, new Matrix(v));
         return new Vector(result.getValue(1, 1), result.getValue(2, 1), result.getValue(3, 1));
     }
-    public static Point rotatePoint(char value, Point p){
-        return rotateVector(value, new Vector(p)).getPoint();
+    public static Point rotatePoint(Axis axis, Point p){
+        return rotateVector(axis, new Vector(p)).getPoint();
     }
 }

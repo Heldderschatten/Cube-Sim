@@ -15,11 +15,11 @@ public class Matrix_Calc {
     /**
      * Add a Matrix a to a matrix b,
      * <p>
-     * Its importend that the Matrix a and b have the same Size!
+     * Its imported that the Matrix a and b have the same Size!
      *
      * @param a the first Matrix
      * @param b the second matrix
-     * @return the sum of the Two Matirx
+     * @return the sum of the Two Matrix
      */
     public static Matrix add(Matrix a, Matrix b) {
         checkAtrhmetial(ADDITION, a, b);
@@ -34,9 +34,9 @@ public class Matrix_Calc {
 
 
     /**
-     * Multipy two given Matrix.
+     * Multiply two given Matrix.
      * <p>
-     * Importend! the Matrix mulipkation is non-commutativity
+     * Imported! the Matrix multiplication is non-commutativity
      *
      * @param a Maritx a
      * @param b Matirx b
@@ -61,7 +61,7 @@ public class Matrix_Calc {
             throw new ArithmeticException(switch (type) {
                 case MULIPLIKATION -> MuliplikationError;
                 case ADDITION -> AddtionError;
-                default -> throw new IllegalArgumentException("undifend Type of Operation");
+                default -> throw new IllegalArgumentException("unified Type of Operation");
             });
     }
 
@@ -70,7 +70,7 @@ public class Matrix_Calc {
         return !switch (type) {
             case MULIPLIKATION -> (a.getRow() == b.getColumn());
             case ADDITION -> (a.getRow() == b.getRow()) && (a.getColumn() == b.getColumn());
-            default -> throw new IllegalArgumentException("undifend Type of Operation");
+            default -> throw new IllegalArgumentException("unified Type of Operation");
         };
     }
 }

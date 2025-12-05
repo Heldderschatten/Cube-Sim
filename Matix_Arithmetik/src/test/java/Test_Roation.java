@@ -1,4 +1,5 @@
 import Calculation.RoomRotion;
+import Objects.IntegerObjects.Axis;
 import Objects.IntegerObjects.Point;
 import org.junit.jupiter.api.Test;
 
@@ -13,9 +14,9 @@ public class Test_Roation {
     @Test
     void Test_Roation() {
         for (int i = 0; i < startPoints.length; i++) {
-            testPoint(RoomRotion.rotatePoint('x',startPoints[i]), rXEndPoints[i]);
-            testPoint(RoomRotion.rotatePoint('y',startPoints[i]), rYEndPoints[i]);
-            testPoint(RoomRotion.rotatePoint('z',startPoints[i]), rZEndPoints[i]);
+            testPoint(RoomRotion.rotatePoint(Axis.X_AXIS,startPoints[i]), rXEndPoints[i]);
+            testPoint(RoomRotion.rotatePoint(Axis.Y_AXIS,startPoints[i]), rYEndPoints[i]);
+            testPoint(RoomRotion.rotatePoint(Axis.Z_AXIS,startPoints[i]), rZEndPoints[i]);
         }
     }
 

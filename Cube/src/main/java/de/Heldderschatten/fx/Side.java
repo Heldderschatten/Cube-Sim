@@ -17,7 +17,7 @@ public class Side {
         return postion;
     }
 
-    public void setPostion(Point postion) {
+    protected void setPostion(Point postion) {
         this.postion = postion;
     }
 

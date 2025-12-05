@@ -1,6 +1,7 @@
 package Objects.IntegerObjects;
 
 public abstract class Cordinates {
+    public static final int START_DIMENSION = 1;
     private final int dimension;
     private int[] value;
 
