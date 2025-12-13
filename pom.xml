@@ -10,7 +10,7 @@
     <packaging>pom</packaging>
     <modules>
         <module>Matix_Arithmetik</module>
-        <module>Cube</module>
+        <module>Cube-Core</module>
     </modules>
 
     <properties>

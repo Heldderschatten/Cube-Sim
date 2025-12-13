@@ -4,21 +4,12 @@ import Objects.IntegerObjects.Point;
 
 
 
-public class Side {
-    private Point postion;
+public class Side extends CubeElement {
     private final Color color;
 
     public Side(Point postion, Color color) {
-        this.postion = postion;
+        super(postion);
         this.color = color;
-    }
-
-    public Point getPostion() {
-        return postion;
-    }
-
-    protected void setPostion(Point postion) {
-        this.postion = postion;
     }
 
     public Color getColor() {
