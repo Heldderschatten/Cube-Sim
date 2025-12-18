@@ -26,8 +26,4 @@ public class Cube {
         return stones;
     }
 
-    public boolean checkSolved(){
-
-    }
-
 }
